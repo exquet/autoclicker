@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    timer->setInterval(timeScale());
+    connect(timer, &QTimer::timeout, this, &MainWindow::on_timeout);
+    timer->start();
 }
 
 MainWindow::~MainWindow()
@@ -17,12 +20,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_startButton_clicked()
 {
-    while(click){
-
-    }
+    click = true;
 }
 
 long MainWindow::timeScale(){
-    return time = (hours*360000 + mins*6000 + secs*100 + msecs);
+    return time = (hours*3600000 + mins*60000 + secs*1000 + msecs);
+}
+
+
+void MainWindow::on_stopButton_clicked()
+{
+    click = false;
+}
+
+void MainWindow::on_timeout(){
+    if(click){
+
+    }
 }
 

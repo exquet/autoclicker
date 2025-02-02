@@ -34,8 +34,11 @@ private:
     long time;
     long timeScale();
     bool click;
+    QTimer *timer;
 
 private slots:
     void on_startButton_clicked();
+    void on_stopButton_clicked();
+    void on_timeout();
 };
 #endif // MAINWINDOW_H
