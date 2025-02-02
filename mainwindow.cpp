@@ -26,10 +26,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_startButton_clicked()
 {
+    timer->setInterval(timeScale());
     click = true;
 }
 
 long MainWindow::timeScale(){
+    hours = ui->hoursSpinBox->value();
+    mins = ui->minsSpinBox->value();
+    secs = ui->secsSpinBox->value();
+    msecs = ui->msecsSpinBox->value();
+
     time = (hours*3600000 + mins*60000 + secs*1000 + msecs);
     return time;
 }

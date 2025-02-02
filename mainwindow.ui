@@ -145,7 +145,11 @@
             </spacer>
            </item>
            <item>
-            <widget class="QSpinBox" name="msecsSpinBox"/>
+            <widget class="QSpinBox" name="msecsSpinBox">
+             <property name="maximum">
+              <number>999</number>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QLabel" name="label_7">
