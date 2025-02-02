@@ -7,8 +7,6 @@
 #include <QLabel>
 #include <QSpinBox>
 #include <QTimer>
-#include <QMouseEvent>
-#include <QCursor>
 #include <Windows.h>
 
 QT_BEGIN_NAMESPACE
