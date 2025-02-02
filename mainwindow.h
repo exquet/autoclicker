@@ -2,6 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QLabel>
+#include <QSpinBox>
+#include <QTimer>
+#include <QMouseEvent>
+#include <QCursor>
+#include <Windows.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,5 +27,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    int hours;
+    int mins;
+    int secs;
+    int msecs;
+    long time;
+    long timeScale();
+    bool click;
+
+private slots:
+    void on_startButton_clicked();
 };
 #endif // MAINWINDOW_H
