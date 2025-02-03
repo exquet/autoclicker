@@ -17,10 +17,13 @@ MainWindow::MainWindow(QWidget *parent)
     timer->setInterval(timeScale());
     connect(timer, &QTimer::timeout, this, &MainWindow::on_timeout);
     timer->start();
+
+    RegisterHotKey(reinterpret_cast<HWND>(winId()), 1, 0, VK_F10); // регистрация глобальной горячей клавиши с id = 1
 }
 
 MainWindow::~MainWindow()
 {
+    UnregisterHotKey(reinterpret_cast<HWND>(winId()), 1); // отмена регистрации глобальной горячей клавиши с id = 1
     delete ui;
 }
 
@@ -66,5 +69,28 @@ void MainWindow::on_timeout(){
             SendInput(2, inputEvents, sizeof(INPUT));
         }
     }
+}
+
+bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, qintptr *result) // WinAPI
+{
+    // проверяем, что полученное событие – Windows-сообщение
+    if (eventType == "windows_generic_MSG") {
+        MSG* msg = static_cast<MSG*>(message);
+        // если сообщение WM_HOTKEY
+        if (msg->message == WM_HOTKEY) {
+            // если идентификатор горячей клавиши равен 1
+            if (msg->wParam == 1) {
+                toggleClicker();
+                return true;
+            }
+        }
+    }
+
+    return QMainWindow::nativeEvent(eventType, message, result);
+}
+
+void MainWindow::toggleClicker(){
+    timer->setInterval(timeScale());
+    click = !click;
 }
 

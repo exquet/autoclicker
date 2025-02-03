@@ -23,6 +23,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+protected:
+    bool nativeEvent(const QByteArray &eventType, void *message, qintptr *result) override;
+    // получаем уведомления о срабатывании глобальной горячей клавиши
+
 private:
     Ui::MainWindow *ui;
     int hours;
@@ -38,5 +42,6 @@ private slots:
     void on_startButton_clicked();
     void on_stopButton_clicked();
     void on_timeout();
+    void toggleClicker();
 };
 #endif // MAINWINDOW_H

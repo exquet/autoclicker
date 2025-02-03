@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>467</width>
-    <height>185</height>
+    <height>199</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>autoclicker</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
